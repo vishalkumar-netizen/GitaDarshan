@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shrimad Bhagavad Gita — Sacred Scripture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<!-- UPDATED: Added new font families for the customization feature without touching original fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+Devanagari:wght@300;400;500&family=Cinzel:wght@400;500;600&family=Merriweather:wght@300;400;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Poppins:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#d97706; /* Adjusted for light background */
+  --gold-light:#e07b39; /* Saffron base */
+  --saffron:#ea580c;
+  --dark:#fff6f0; /* Light Bhagwa Base */
+  --dark2:#ffeadd;
+  --card:#ffffff;
+  --card2:#fffaf7;
+  --text:#4a2110; /* Deep readable saffron-brown */
+  --text-muted:#8c4220;
+  --text-dim:#b36336;
+  --border:rgba(224,123,57,0.25);
+  --border-s:rgba(224,123,57,0.5);
+  --r:12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;line-height:1.7;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--dark2)}::-webkit-scrollbar-thumb{background:var(--gold-light);border-radius:3px}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(224,123,57,.12) 0%,transparent 70%),radial-gradient(ellipse 60% 80% at 80% 100%,rgba(234,88,12,.08) 0%,transparent 60%);pointer-events:none}
+.bg::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:50%;border:1px solid rgba(224,123,57,.08);box-shadow:0 0 0 70px rgba(224,123,57,.04),0 0 0 150px rgba(224,123,57,.03),0 0 0 240px rgba(224,123,57,.02);animation:rot 120s linear infinite;pointer-events:none}
+@keyframes rot{to{transform:translate(-50%,-50%) rotate(360deg)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:rgba(255,246,240,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nbrand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.nom{font-size:28px;color:var(--gold);font-family:'Noto Sans Devanagari',sans-serif;line-height:1}
+.ntitle{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--text-muted);letter-spacing:.12em}
+.nlinks{display:flex;align-items:center;gap:4px;list-style:none}
+.nlinks button{background:none;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:13px;color:var(--text-muted);letter-spacing:.1em;padding:6px 14px;border-radius:20px;transition:all .25s;text-transform:uppercase;font-weight:600}
+.nlinks button:hover{color:var(--gold-light);background:rgba(224,123,57,.1)}
+.ham{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.ham span{width:22px;height:1.5px;background:var(--text-muted);display:block}
+#app{position:relative;z-index:1;min-height:100vh}
+.page{display:none;padding-top:64px;min-height:100vh;animation:fi .35s ease}
+.page.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem}
+.hlotus{font-size:60px;margin-bottom:1.5rem;animation:flt 4s ease-in-out infinite}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hlabel{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.htitle{font-size:clamp(3.2rem,8vw,6rem);font-weight:300;line-height:1.1;margin-bottom:.4rem}
+.htitle span{color:var(--gold-light);font-style:italic;font-weight:500}
+.hsub{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.2rem;color:var(--text-muted);margin-bottom:2rem;letter-spacing:.05em}
+.hdiv{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent);margin:0 auto 2rem}
+.hcard{max-width:620px;width:100%;background:rgba(255,255,255,.7);border:1px solid var(--border);border-radius:var(--r);padding:2rem 2.5rem;margin-bottom:2.5rem;backdrop-filter:blur(8px)}
+.hsan{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.3rem;font-weight:500;color:var(--gold-light);line-height:1.9;margin-bottom:.75rem;min-height:2em}
+.htrans{font-size:1.1rem;color:var(--text-muted);font-style:italic;line-height:1.7;min-height:1.5em;font-weight:500}
+.href{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.15em;margin-top:.75rem;text-align:right}
+.cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{font-family:'Cinzel',serif;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:12px 28px;border-radius:40px;cursor:pointer;transition:all .3s;border:none;display:inline-flex;align-items:center;gap:8px}
+.btnp{background:linear-gradient(135deg,var(--gold-light),var(--saffron));color:#ffffff}
+.btnp:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,123,57,.35)}
+.btno{background:transparent;border:2px solid var(--border-s)!important;color:var(--gold-light)}
+.btno:hover{background:rgba(224,123,57,.1);transform:translateY(-2px)}
+.stats{display:flex;justify-content:center;gap:3rem;padding:2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.5);flex-wrap:wrap}
+.stat{text-align:center}
+.snum{font-size:2.2rem;font-weight:500;color:var(--gold-light);font-family:'Cinzel',serif}
+.slbl{font-size:.85rem;font-weight:600;color:var(--text-muted);letter-spacing:.1em;font-family:'Cinzel',serif;text-transform:uppercase}
+.sec{padding:4rem 2rem;max-width:1200px;margin:0 auto}
+.shead{text-align:center;margin-bottom:3rem}
+.slabel{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.stitle{font-size:clamp(2rem,5vw,3rem);font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.chcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;box-shadow:0 4px 15px rgba(224,123,57,.03)}
+.chcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent);opacity:0;transition:opacity .3s}
+.chcard:hover{border-color:var(--border-s);transform:translateY(-3px);background:var(--card2);box-shadow:0 8px 25px rgba(224,123,57,.1)}
+.chcard:hover::before{opacity:1}
+.chnum{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.15em;margin-bottom:.4rem}
+.chname{font-size:1.25rem;font-weight:600;margin-bottom:.25rem}
+.chsan{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.15rem;font-weight:500;color:var(--gold-light);margin-bottom:.3rem}
+.chmng{font-size:1.05rem;color:var(--text-muted);font-style:italic}
+.chcnt{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--text-dim);letter-spacing:.1em;margin-top:.75rem}
+.chhead{text-align:center;padding:3rem 2rem 2rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(224,123,57,.08) 0%,transparent 100%)}
+.chhead-num{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.25em;margin-bottom:.6rem}
+.chhead-title{font-size:clamp(2rem,6vw,3.2rem);font-weight:400;margin-bottom:.4rem}
+.chhead-san{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.4rem;font-weight:500;color:var(--gold-light);margin-bottom:.4rem}
+.chhead-mng{color:var(--text-muted);font-style:italic;font-size:1.1rem;font-weight:500}
+.chsummary{max-width:760px;margin:2rem auto;color:var(--text-muted);line-height:1.85;font-size:1.1rem;background:rgba(255,255,255,.6);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 2rem;font-weight:500}
+.vlist{max-width:880px;margin:0 auto;padding:1.5rem 2rem}
+.vrow{display:flex;align-items:center;gap:1.25rem;padding:1rem .5rem;border-bottom:1px solid rgba(224,123,57,.1);cursor:pointer;transition:all .2s;border-radius:8px;font-weight:500}
+.vrow:hover{background:rgba(224,123,57,.08);padding-left:.75rem}
+.vrnum{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--gold);min-width:44px;letter-spacing:.1em;flex-shrink:0}
+.vrsan{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.1rem;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vrarr{font-size:1.3rem;color:var(--text-dim);transition:all .2s;flex-shrink:0}
+.vrow:hover .vrarr{transform:translateX(4px);color:var(--gold-light)}
+.vpage{max-width:840px;margin:0 auto;padding:2rem}
+.vnav{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;gap:1rem;flex-wrap:wrap}
+.vnbtn{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.1em;background:var(--card);border:1px solid var(--border);color:var(--text-muted);padding:9px 18px;border-radius:40px;cursor:pointer;transition:all .25s;text-transform:uppercase}
+.vnbtn:hover{border-color:var(--gold-light);color:var(--gold-light)}
+.vbadge{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--gold-light);letter-spacing:.15em;background:rgba(224,123,57,.12);padding:6px 16px;border-radius:20px;border:1px solid var(--border)}
+.vblock{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem 2.5rem;margin-bottom:1.25rem;box-shadow:0 4px 15px rgba(224,123,57,.03)}
+.vblabel{font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.vblabel::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border-s),transparent)}
+.vsan{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.5rem;font-weight:500;line-height:2;color:var(--gold-light)}
+.vtrans{font-size:1.15rem;color:var(--text-muted);font-style:italic;line-height:1.9;margin-top:1rem;font-weight:500}
+.vwords{font-size:1.05rem;color:var(--text-dim);line-height:1.8;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.25rem}
+.tab{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--card);border:1px solid var(--border);color:var(--text-muted);padding:7px 14px;border-radius:20px;cursor:pointer;transition:all .2s}
+.tab:hover{border-color:var(--border-s);color:var(--text)}
+.tab.active{background:rgba(224,123,57,.15);border-color:var(--gold-light);color:var(--gold-light)}
+.tbox{background:var(--card2);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem 2rem}
+.tauthor{font-family:'Cinzel',serif;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+.ttext{font-size:1.2rem;line-height:1.85;font-weight:500}
+.bkbtn{background:none;border:1px solid var(--border);color:var(--text-muted);padding:9px 18px;border-radius:40px;cursor:pointer;font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .25s}
+.bkbtn:hover,.bkbtn.saved{border-color:var(--gold-light);color:var(--gold-light)}
+.swrap{max-width:700px;margin:0 auto;padding:3rem 2rem}
+.sbox{display:flex;background:var(--card);border:1px solid var(--border);border-radius:40px;overflow:hidden;margin-bottom:2rem;transition:border-color .25s;box-shadow:0 4px 15px rgba(224,123,57,.04)}
+.sbox:focus-within{border-color:var(--gold-light)}
+.sbox input{flex:1;background:none;border:none;outline:none;padding:14px 22px;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text);caret-color:var(--gold-light);font-weight:500}
+.sbox input::placeholder{color:var(--text-dim)}
+.sbox button{background:linear-gradient(135deg,var(--gold-light),var(--saffron));border:none;cursor:pointer;padding:12px 26px;color:#ffffff;font-family:'Cinzel',serif;font-size:14px;letter-spacing:.1em;font-weight:600}
+.sbox button:hover{opacity:.85}
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.5rem;margin-bottom:.75rem;cursor:pointer;transition:all .25s;box-shadow:0 4px 15px rgba(224,123,57,.02)}
+.rcard:hover{border-color:var(--border-s);transform:translateY(-2px);box-shadow:0 8px 25px rgba(224,123,57,.08)}
+.rref{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.15em;margin-bottom:.4rem}
+.rsan{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.15rem;font-weight:500;color:var(--gold-light);margin-bottom:.4rem}
+.rtxt{font-size:1.1rem;color:var(--text-muted);font-style:italic;font-weight:500}
+.dwrap{max-width:800px;margin:0 auto;padding:4rem 2rem;text-align:center}
+.dcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(224,123,57,.05)}
+.dcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold-light),var(--saffron),transparent)}
+.dsan{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.5rem;font-weight:500;line-height:2;color:var(--gold-light);margin-bottom:1.5rem}
+.dtxt{font-size:1.25rem;line-height:1.85;font-style:italic;margin-bottom:1rem;font-weight:500}
+.dautr{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--text-dim);letter-spacing:.15em}
+.bkwrap{max-width:900px;margin:0 auto;padding:3rem 2rem}
+.ld{display:flex;flex-direction:column;align-items:center;padding:5rem;gap:1.5rem}
+.ldr{width:38px;height:38px;border:3px solid var(--border);border-top-color:var(--gold-light);border-radius:50%;animation:rot .8s linear infinite}
+.ltxt{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:.2em;text-transform:uppercase}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:.15em;text-transform:uppercase;background:none;border:none;cursor:pointer;padding:14px 20px 12px 2rem;transition:color .2s}
+.back:hover{color:var(--gold-light)}
+.err{text-align:center;padding:3rem;color:var(--text-muted);font-style:italic;font-weight:500}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);margin-top:4rem;color:var(--text-dim);font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.15em}
+.fom{font-size:1.8rem;color:var(--gold-light);margin-bottom:.75rem;font-family:'Noto Sans Devanagari',sans-serif}
+@media(max-width:640px){
+  nav{padding:0 1rem}
+  .nlinks{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(255,246,240,.97);padding:1rem;border-bottom:1px solid var(--border);z-index:99}
+  .nlinks.open{display:flex}
+  .ham{display:flex}
+  .grid{grid-template-columns:1fr}
+  .vblock{padding:1.5rem}
+  .stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nbrand" onclick="go('home')">
+    <span class="nom">ॐ</span>
+    <span class="ntitle">Bhagavad Gita</span>
+  </div>
+  <ul class="nlinks" id="nl">
+    <button onclick="go('home');cm()">Home</button>
+    <button onclick="go('chapters');cm()">Chapters</button>
+    <button onclick="go('daily');cm()">Daily Wisdom</button>
+    <button onclick="go('search');cm()">Search</button>
+    <button onclick="go('bookmarks');cm()">Saved</button>
+  </ul>
+  <button class="ham" onclick="document.getElementById('nl').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div id="app">
+
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hlotus">🪷</div>
+    <p class="hlabel">The Song of God</p>
+    <h1 class="htitle">Shrimad<br/><span>Bhagavad Gita</span></h1>
+    <p class="hsub">श्रीमद्भगवद्गीता</p>
+    <div class="hdiv"></div>
+    <div class="hcard">
+      <div class="hsan" id="hsan">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br/>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</div>
+      <div class="htrans" id="htrans">You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions.</div>
+      <div class="href" id="href">— Bhagavad Gita 2.47</div>
+    </div>
+    <div class="cta">
+      <button class="btn btnp" onclick="go('chapters')">Explore Chapters</button>
+      <button class="btn btno" onclick="go('daily')">Daily Wisdom</button>
+    </div>
+  </section>
+  <div class="stats">
+    <div class="stat"><div class="snum">18</div><div class="slbl">Chapters</div></div>
+    <div class="stat"><div class="snum">700</div><div class="slbl">Verses</div></div>
+    <div class="stat"><div class="snum">10+</div><div class="slbl">Translators</div></div>
+    <div class="stat"><div class="snum">5000+</div><div class="slbl">Years of Wisdom</div></div>
+  </div>
+  <section class="sec">
+    <div class="shead"><p class="slabel">Sacred Scripture</p><h2 class="stitle">The 18 Chapters</h2></div>
+    <div class="grid" id="hgrid"></div>
+  </section>
+</div>
+
+<div id="page-chapters" class="page">
+  <section class="sec">
+    <div class="shead"><p class="slabel">Sacred Scripture</p><h2 class="stitle">All 18 Chapters</h2></div>
+    <div class="grid" id="cgrid"></div>
+  </section>
+</div>
+
+<div id="page-chapter" class="page"><div id="chc"></div></div>
+<div id="page-verse" class="page"><div class="vpage" id="vc"></div></div>
+
+<div id="page-daily" class="page">
+  <div class="dwrap">
+    <div class="shead"><p class="slabel">Every Day, A New Teaching</p><h2 class="stitle">Daily Wisdom</h2></div>
+    <div id="dc"></div>
+  </div>
+</div>
+
+<div id="page-search" class="page">
+  <div class="swrap">
+    <div class="shead"><p class="slabel">Find a Verse</p><h2 class="stitle">Search the Gita</h2></div>
+    <div class="sbox">
+      <input type="text" id="si" placeholder="Search by word, concept or phrase…" onkeydown="if(event.key==='Enter')doSearch()"/>
+      <button onclick="doSearch()">Search</button>
+    </div>
+    <div id="sr"></div>
+  </div>
+</div>
+
+<div id="page-bookmarks" class="page">
+  <div class="bkwrap">
+    <div class="shead"><p class="slabel">Your Collection</p><h2 class="stitle">Saved Verses</h2></div>
+    <div id="bkc"></div>
+  </div>
+</div>
+
+</div>
+<footer>
+  <div class="fom">ॐ</div>
+  <p>Shrimad Bhagavad Gita — Sacred Wisdom of the Ages</p>
+  <p style="margin-top:.5rem">Verse data: <a href="https://vedicscriptures.github.io" target="_blank" style="color:var(--gold-light);text-decoration:none">VedicScriptures Open API</a></p>
+</footer>
+
+<!-- ========================================== -->
+<!-- NEW FEATURES UI: SETTINGS ADD-ON OVERLAY   -->
+<!-- ========================================== -->
+
+<!-- Add-on Styles injected strictly below existing styles to ensure non-destructive override via CSS Variables -->
+<style id="ui-settings-addon">
+  /* Base Overrides through CSS Variables to respect original art direction */
+  :root {
+    --user-font: 'Cormorant Garamond', Georgia, serif;
+    --user-size: 19px;
+  }
+  
+  body, .sbox input {
+    font-family: var(--user-font) !important;
+    font-size: var(--user-size) !important;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* Theme Floating Button */
+  .set-fab { position: fixed; bottom: 30px; right: 30px; z-index: 999; background: var(--card); border: 1px solid var(--border-s); color: var(--gold-light); width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 24px rgba(224,123,57,0.25); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .set-fab:hover { transform: scale(1.08) rotate(15deg); background: var(--card2); border-color: var(--gold); }
+  .set-fab svg { width: 28px; height: 28px; fill: currentColor; }
+
+  /* Settings Panel */
+  .set-panel { position: fixed; top: 0; right: -380px; width: 360px; height: 100vh; background: var(--card); backdrop-filter: blur(20px); border-left: 1px solid var(--border); z-index: 1001; padding: 2.5rem 2rem; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; color: var(--text); font-family: 'Inter', sans-serif; box-shadow: -10px 0 30px rgba(0,0,0,0.15); }
+  .set-panel.open { right: 0; }
+  .set-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; display: none; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(3px); }
+  .set-overlay.show { display: block; opacity: 1; }
+
+  .set-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+  .set-title { font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 1.3rem; margin:0; font-weight: 600; letter-spacing: 0.1em; }
+  .set-close { background: none; border: none; color: var(--text-muted); font-size: 2rem; line-height: 1; cursor: pointer; transition: color 0.2s; padding: 0 10px; }
+  .set-close:hover { color: var(--gold-light); }
+
+  .set-group { margin-bottom: 2.5rem; }
+  .set-label { font-size: 0.75rem; font-weight:600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 1rem; display: block; font-family: 'Cinzel', serif;}
+
+  /* Mode Toggles */
+  .set-modes { display: flex; gap: 10px; background: rgba(224,123,57,0.08); padding: 5px; border-radius: 12px; border: 1px solid var(--border); }
+  .set-mode-btn { flex: 1; padding: 12px; background: transparent; border: none; color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s; font-family: 'Cinzel', serif; font-size: 13px; font-weight:600; letter-spacing: 0.1em; text-transform: uppercase; }
+  .set-mode-btn.active { background: rgba(224,123,57,0.15); color: var(--gold-light); box-shadow: 0 4px 12px rgba(224,123,57,0.1); }
+
+  /* Color Grid */
+  .set-colors { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .set-color-btn { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s, border-color 0.2s; position: relative; }
+  .set-color-btn::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid transparent; transition: border-color 0.2s; }
+  .set-color-btn.active { transform: scale(1.1); border-color: var(--text-muted); }
+  .set-color-btn.active::after { border-color: var(--gold-light); }
+
+  /* Fonts */
+  .set-select { width: 100%; padding: 14px 16px; background: rgba(224,123,57,0.08); border: 1px solid var(--border); color: var(--text); border-radius: 12px; font-size: 1rem; font-weight:500; cursor: pointer; outline: none; appearance: none; font-family: inherit; }
+  .set-select option { background: var(--card); color: var(--text); }
+
+  /* Size Controls */
+  .set-sizes { display: flex; align-items: center; justify-content: space-between; background: rgba(224,123,57,0.08); border: 1px solid var(--border); border-radius: 12px; padding: 6px; }
+  .set-size-btn { width: 44px; height: 44px; background: transparent; border: none; color: var(--gold-light); font-size: 1.1rem; font-weight:600; cursor: pointer; border-radius: 8px; transition: background 0.2s; }
+  .set-size-btn:hover { background: rgba(224,123,57,0.1); }
+  .set-size-disp { font-size: 1.1rem; color: var(--text-muted); font-weight: 600; font-family: 'Inter', sans-serif;}
+
+  /* ------------------------------------- */
+  /* LIGHT MODE GLOBAL OVERRIDES           */
+  /* ------------------------------------- */
+  body.light-theme {
+    --text: #4a2110 !important;
+    --text-muted: #8c4220 !important;
+    --text-dim: #b36336 !important;
+    --border: rgba(224,123,57,0.25) !important;
+    --border-s: rgba(224,123,57,0.5) !important;
+  }
+  body.light-theme nav { background: rgba(255,246,240,0.85) !important; }
+  body.light-theme .nlinks{ background: rgba(255,246,240,0.97) !important; }
+  body.light-theme .set-panel { background: rgba(255,250,245,0.95); color: #4a2110; }
+  body.light-theme .set-select { color: #4a2110; }
+  body.light-theme .set-select option { background: #fff; color: #4a2110; }
+  body.light-theme .set-modes, body.light-theme .set-sizes, body.light-theme .set-select { background: rgba(224,123,57,0.06); }
+
+  @media(max-width:640px){
+    .set-panel { width: 100%; right: -100%; }
+    .set-fab { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+  }
+</style>
+
+<!-- Add-on HTML injected before scripts -->
+<div class="set-overlay" id="setOverlay" onclick="uiToggle()"></div>
+<div class="set-fab" onclick="uiToggle()" title="Personalize Experience">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C13.1 22 14 21.1 14 20C14 19.5 13.8 19.04 13.47 18.7C13.19 18.42 13 18.04 13 17.63C13 16.73 13.73 16 14.63 16H16C19.31 16 22 13.31 22 10C22 5.58 17.52 2 12 2ZM8.5 11C7.67 11 7 10.33 7 9.5C7 8.67 7.67 8 8.5 8C9.33 8 10 8.67 10 9.5C10 10.33 9.33 11 8.5 11ZM11.5 7.5C10.67 7.5 10 6.83 10 6C10 5.17 10.67 4.5 11.5 4.5C12.33 4.5 13 5.17 13 6C13 6.83 12.33 7.5 11.5 7.5ZM14.5 7.5C13.67 7.5 13 6.83 13 6C13 5.17 13.67 4.5 14.5 4.5C15.33 4.5 16 5.17 16 6C16 6.83 15.33 7.5 14.5 7.5ZM17.5 11C16.67 11 16 10.33 16 9.5C16 8.67 16.67 8 17.5 8C18.33 8 19 8.67 19 9.5C19 10.33 18.33 11 17.5 11Z"/>
+  </svg>
+</div>
+
+<div class="set-panel" id="setPanel">
+  <div class="set-header">
+    <h3 class="set-title">Personalize</h3>
+    <button class="set-close" onclick="uiToggle()">×</button>
+  </div>
+
+  <div class="set-group">
+    <span class="set-label">Visual Mode</span>
+    <div class="set-modes">
+      <button class="set-mode-btn" id="btnLight" onclick="uiMode('light')">Light</button>
+      <button class="set-mode-btn" id="btnDark" onclick="uiMode('dark')">Dark</button>
+    </div>
+  </div>
+
+  <div class="set-group">
+    <span class="set-label">Color Theme</span>
+    <div class="set-colors" id="uiColorsGrid"></div>
+  </div>
+
+  <div class="set-group">
+    <span class="set-label">Typography Style</span>
+    <select class="set-select" id="uiFontSelect" onchange="uiFont(this.value)"></select>
+  </div>
+
+  <div class="set-group">
+    <span class="set-label">Reading Size</span>
+    <div class="set-sizes">
+      <button class="set-size-btn" onclick="uiSize(-1)">A-</button>
+      <span class="set-size-disp" id="uiSizeDisp">19px</span>
+      <button class="set-size-btn" onclick="uiSize(1)">A+</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add-on Script injected cleanly before original script execution -->
+<script>
+// 10 Distinct Themes (with Dark and Light variants ensuring perfect legibility)
+const uiThemes = [
+  { id: 'bhagwa', color: '#ff9933', darkVars: { dark: '#1c0d06', dark2: '#2b1408', card: '#3d1c0b', card2: '#4a230e' }, lightVars: { dark: '#fff6f0', dark2: '#ffeadd', card: '#ffffff', card2: '#fffaf7' } },
+  { id: 'default', color: '#14111a', darkVars: { dark: '#0d0b0e', dark2: '#14111a', card: '#201c2e', card2: '#261f35' }, lightVars: { dark: '#fdfcfb', dark2: '#f5f3f0', card: '#ffffff', card2: '#faf9f7' } },
+  { id: 'navy', color: '#0a111f', darkVars: { dark: '#050b14', dark2: '#0a111f', card: '#151e30', card2: '#1a253b' }, lightVars: { dark: '#f4f6fa', dark2: '#ebf0f7', card: '#ffffff', card2: '#f8fafc' } },
+  { id: 'forest', color: '#0d1f12', darkVars: { dark: '#08140b', dark2: '#0d1f12', card: '#172e1e', card2: '#1c3824' }, lightVars: { dark: '#f2fcf5', dark2: '#e6f7ec', card: '#ffffff', card2: '#f9fdfa' } },
+  { id: 'maroon', color: '#261114', darkVars: { dark: '#1a090b', dark2: '#261114', card: '#3b1c21', card2: '#472228' }, lightVars: { dark: '#fcf2f4', dark2: '#f7e6e9', card: '#ffffff', card2: '#fdf7f8' } },
+  { id: 'slate', color: '#1b1e23', darkVars: { dark: '#121417', dark2: '#1b1e23', card: '#282c33', card2: '#30353d' }, lightVars: { dark: '#f5f6f8', dark2: '#ebedf2', card: '#ffffff', card2: '#f9fafb' } },
+  { id: 'sepia', color: '#261e18', darkVars: { dark: '#1a1410', dark2: '#261e18', card: '#382c23', card2: '#42352a' }, lightVars: { dark: '#faf6f0', dark2: '#f2ebe1', card: '#ffffff', card2: '#fdfbfa' } },
+  { id: 'teal', color: '#0a1f22', darkVars: { dark: '#041416', dark2: '#0a1f22', card: '#153338', card2: '#193f45' }, lightVars: { dark: '#f0fafa', dark2: '#e0f5f5', card: '#ffffff', card2: '#f7fdfd' } },
+  { id: 'indigo', color: '#151329', darkVars: { dark: '#0d0c1c', dark2: '#151329', card: '#232040', card2: '#2a264d' }, lightVars: { dark: '#f5f4fc', dark2: '#ebe8f7', card: '#ffffff', card2: '#f9f8fd' } },
+  { id: 'charcoal', color: '#171717', darkVars: { dark: '#0f0f0f', dark2: '#171717', card: '#262626', card2: '#2e2e2e' }, lightVars: { dark: '#f7f7f7', dark2: '#ebebeb', card: '#ffffff', card2: '#fbfbfb' } }
+];
+
+// 6 Font Families (Fulfilling the 5+ styles request)
+const uiFonts = [
+  { id: 'cormorant', name: 'Cormorant (Serif)', val: "'Cormorant Garamond', Georgia, serif" },
+  { id: 'merriweather', name: 'Merriweather (Serif)', val: "'Merriweather', serif" },
+  { id: 'lora', name: 'Lora (Serif)', val: "'Lora', serif" },
+  { id: 'playfair', name: 'Playfair Display (Serif)', val: "'Playfair Display', serif" },
+  { id: 'inter', name: 'Inter (Sans-Serif)', val: "'Inter', sans-serif" },
+  { id: 'poppins', name: 'Poppins (Sans-Serif)', val: "'Poppins', sans-serif" }
+];
+
+// Load UI preferences or set default natively to Light Bhagwa!
+let uiPrefs = JSON.parse(localStorage.getItem('gita_ui_addon')) || { mode: 'light', theme: 'bhagwa', font: 'cormorant', size: 19 };
+
+function uiToggle() {
+  document.getElementById('setPanel').classList.toggle('open');
+  document.getElementById('setOverlay').classList.toggle('show');
+}
+
+function uiInit() {
+  // Inject 10 colors
+  document.getElementById('uiColorsGrid').innerHTML = uiThemes.map(t => 
+    `<div class="set-color-btn ${t.id === uiPrefs.theme ? 'active' : ''}" style="background:${t.color}" onclick="uiTheme('${t.id}')" id="cb-${t.id}"></div>`
+  ).join('');
+
+  // Inject fonts
+  document.getElementById('uiFontSelect').innerHTML = uiFonts.map(f => 
+    `<option value="${f.id}" ${f.id === uiPrefs.font ? 'selected' : ''}>${f.name}</option>`
+  ).join('');
+
+  uiApply();
+}
+
+function uiMode(m) { uiPrefs.mode = m; uiApply(); }
+function uiTheme(t) { uiPrefs.theme = t; uiApply(); }
+function uiFont(f) { uiPrefs.font = f; uiApply(); }
+function uiSize(dir) { uiPrefs.size = Math.max(14, Math.min(26, uiPrefs.size + dir)); uiApply(); }
+
+function uiApply() {
+  // 1. Light/Dark Mode Logic
+  document.body.classList.toggle('light-theme', uiPrefs.mode === 'light');
+  document.getElementById('btnLight').classList.toggle('active', uiPrefs.mode === 'light');
+  document.getElementById('btnDark').classList.toggle('active', uiPrefs.mode === 'dark');
+
+  // 2. Color Scheme Logic (Dynamic Variables override)
+  const themeObj = uiThemes.find(x => x.id === uiPrefs.theme) || uiThemes[0];
+  const activeVars = uiPrefs.mode === 'light' ? themeObj.lightVars : themeObj.darkVars;
+  for (const [key, val] of Object.entries(activeVars)) {
+    document.documentElement.style.setProperty('--' + key, val);
+  }
+  document.querySelectorAll('.set-color-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cb-' + themeObj.id).classList.add('active');
+
+  // 3. Font Setup
+  const fontObj = uiFonts.find(x => x.id === uiPrefs.font) || uiFonts[0];
+  document.documentElement.style.setProperty('--user-font', fontObj.val);
+
+  // 4. Font Size
+  document.documentElement.style.setProperty('--user-size', uiPrefs.size + 'px');
+  document.getElementById('uiSizeDisp').textContent = uiPrefs.size + 'px';
+
+  // Save to Memory
+  localStorage.setItem('gita_ui_addon', JSON.stringify(uiPrefs));
+}
+
+// Kickoff Add-on instantly
+uiInit();
+</script>
+
+<!-- ========================================== -->
+<!-- ORIGINAL APP SCRIPT (Unchanged)            -->
+<!-- ========================================== -->
+<script>
+// ── ALL 18 CHAPTERS HARDCODED — loads instantly, zero API calls needed ──
+const CH=[
+  {n:1,name:"Arjuna Vishada Yoga",san:"अर्जुनविषादयोग",mng:"The Yoga of Arjuna's Dejection",v:47,
+   sum:"As both armies stand ready for battle on Kurukshetra, the mighty warrior Arjuna, seeing his kinsmen on both sides, becomes grief-stricken and confused. He tells Krishna that he cannot fight. Thus begins the great discourse of the Bhagavad Gita."},
+  {n:2,name:"Sankhya Yoga",san:"सांख्ययोग",mng:"The Yoga of Knowledge",v:72,
+   sum:"This is the most important chapter — Lord Krishna condenses the teachings of the entire Gita here. He explains the immortality of the soul, the importance of selfless action (Karma Yoga), and describes the qualities of a person of steady wisdom (Sthitaprajna)."},
+  {n:3,name:"Karma Yoga",san:"कर्मयोग",mng:"The Yoga of Action",v:43,
+   sum:"Krishna emphasises the importance of performing one's duty without attachment to results. He explains that it is impossible to remain without action, and that selfless performance of duty is far superior to renunciation of action."},
+  {n:4,name:"Jnana Karma Sanyasa Yoga",san:"ज्ञानकर्मसन्न्यासयोग",mng:"The Yoga of Knowledge and Action",v:42,
+   sum:"Krishna reveals the mystery of his divine birth and activities, explains the transcendental nature of self-knowledge, and shows how wisdom liberates the devotee from the bondage of karma."},
+  {n:5,name:"Karma Sanyasa Yoga",san:"कर्मसन्न्यासयोग",mng:"The Yoga of Renunciation",v:29,
+   sum:"Krishna compares renunciation of actions with performing actions with detachment. He concludes that both paths lead to liberation but Karma Yoga — action with inner renunciation — is superior for most people."},
+  {n:6,name:"Dhyana Yoga",san:"ध्यानयोग",mng:"The Yoga of Meditation",v:47,
+   sum:"Krishna describes the practice of meditation and self-control. He explains correct posture, diet, habits, and the supreme goal of Self-realisation through meditation. He also reassures Arjuna that no spiritual effort is ever wasted."},
+  {n:7,name:"Jnana Vijnana Yoga",san:"ज्ञानविज्ञानयोग",mng:"The Yoga of Wisdom and Knowledge",v:30,
+   sum:"Krishna reveals His divine nature as the source of all creation. He explains that very few truly seek to know Him, and describes how the divine energy of maya deludes the world while He remains the supreme cause of all."},
+  {n:8,name:"Aksara Brahma Yoga",san:"अक्षरब्रह्मयोग",mng:"The Yoga of the Eternal Absolute",v:28,
+   sum:"Krishna explains the concepts of Brahman, karma, and the cosmic cycles. He describes what happens at the time of death and how one who remembers God at that final moment attains liberation."},
+  {n:9,name:"Raja Vidya Raja Guhya Yoga",san:"राजविद्याराजगुह्ययोग",mng:"The Yoga of Royal Knowledge and Mystery",v:34,
+   sum:"Krishna reveals the most confidential knowledge — that He pervades all of existence yet remains transcendent. He teaches that sincere devotion, even from the most humble soul, is fully accepted by Him and that His devotees are never lost."},
+  {n:10,name:"Vibhuti Yoga",san:"विभूतियोग",mng:"The Yoga of Divine Manifestations",v:42,
+   sum:"Krishna describes His divine glories and manifestations (vibhutis). He is the light of the sun, the intelligence among the wise, the power of the powerful, the Himalaya among mountains — the very essence of all excellence."},
+  {n:11,name:"Visvarupa Darsana Yoga",san:"विश्वरूपदर्शनयोग",mng:"The Yoga of the Vision of the Cosmic Form",v:55,
+   sum:"At Arjuna's request, Krishna reveals His magnificent, awe-inspiring Universal Form (Vishwarupa). Arjuna is both awed and terrified, seeks forgiveness, and learns that this supreme form can only be seen through pure devotion."},
+  {n:12,name:"Bhakti Yoga",san:"भक्तियोग",mng:"The Yoga of Devotion",v:20,
+   sum:"Krishna explains the path of devotion (Bhakti) as the supreme yoga. He contrasts devotion to the personal God with worship of the impersonal Absolute, concluding that the path of loving devotion is easiest and most dear to Him."},
+  {n:13,name:"Ksetra Ksetrajna Vibhaga Yoga",san:"क्षेत्रक्षेत्रज्ञविभागयोग",mng:"The Yoga of the Field and the Knower",v:34,
+   sum:"Krishna distinguishes between the body (the field) and the soul (the knower of the field). He describes the qualities of true knowledge and explains how understanding this distinction leads to liberation from material existence."},
+  {n:14,name:"Gunatraya Vibhaga Yoga",san:"गुणत्रयविभागयोग",mng:"The Yoga of the Threefold Qualities",v:27,
+   sum:"Krishna explains the three qualities of material nature — sattva (goodness), rajas (passion), and tamas (ignorance) — and how they bind the soul. He reveals how one transcends all three modes and attains immortality."},
+  {n:15,name:"Purushottama Yoga",san:"पुरुषोत्तमयोग",mng:"The Yoga of the Supreme Self",v:20,
+   sum:"Using the metaphor of the sacred Ashvattha tree, Krishna describes the material world and then reveals the highest truth — that He is the Supreme Person (Purushottama), beyond both the perishable and the imperishable."},
+  {n:16,name:"Daivasura Sampad Vibhaga Yoga",san:"दैवासुरसम्पद्विभागयोग",mng:"The Yoga of Divine and Demoniac Natures",v:24,
+   sum:"Krishna describes divine virtues such as fearlessness, purity, compassion, and truthfulness, contrasted with demoniac qualities such as arrogance, pride, and cruelty. He encourages Arjuna to embrace the divine nature."},
+  {n:17,name:"Sraddhatraya Vibhaga Yoga",san:"श्रद्धात्रयविभागयोग",mng:"The Yoga of the Threefold Faith",v:28,
+   sum:"Krishna classifies faith, food, sacrifice, penance, and charity according to the three modes of material nature. Actions performed without scriptural sanction, without faith, and without proper understanding bear no lasting fruit."},
+  {n:18,name:"Moksha Sanyasa Yoga",san:"मोक्षसन्न्यासयोग",mng:"The Yoga of Liberation through Renunciation",v:78,
+   sum:"In this concluding chapter, Krishna summarises the entire teaching of the Gita. He distinguishes between sannyasa and tyaga, explains the nature of the three modes in all aspects of life, and concludes with the supreme secret: surrender completely to God and receive His grace — this is the final and most confidential teaching."},
+];
+
+const TRANS={
+  siva:{l:'Sivananda',n:'Swami Sivananda'},
+  purohit:{l:'Purohit',n:'Shri Purohit Swami'},
+  tej:{l:'Tejomaya',n:'Swami Tejomayananda'},
+  chinmay:{l:'Chinmaya',n:'Swami Chinmayananda'},
+  gambi:{l:'Gambira',n:'Swami Gambirananda'},
+  adi:{l:'Adidevan',n:'Swami Adidevananda'},
+  rams:{l:'Ramsukh',n:'Swami Ramsukhdas'},
+  san:{l:'Sankara',n:'Dr. S. Sankaranarayan'},
+  madhav:{l:'Madhava',n:'Shri Madhavacharya'},
+  anand:{l:'Anandgiri',n:'Shri Anandgiri'},
+};
+
+const FAMOUS=[
+  {ch:2,v:47,san:'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',t:'You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself the cause of the results, nor be attached to inaction.'},
+  {ch:4,v:7,san:'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥',t:'Whenever there is a decline of righteousness and rise of unrighteousness, O Arjuna, then I manifest Myself on earth.'},
+  {ch:9,v:22,san:'अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥',t:'For those who worship Me with devotion, meditating on My transcendental form — I carry what they lack and preserve what they have.'},
+  {ch:18,v:66,san:'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥',t:'Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear.'},
+  {ch:2,v:20,san:'न जायते म्रियते वा कदाचि-न्नायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे॥',t:'The soul is never born nor dies at any time. It has not come into being, does not come into being, and will not come into being. It is unborn, eternal, ever-existing, and primeval.'},
+];
+
+const API='https://vedicscriptures.github.io';
+const cache={};
+let curCh=1,curV=1,curMaxV=47,curTrans='siva';
+let bookmarks=JSON.parse(localStorage.getItem('gita_bk')||'[]');
+
+function saveBK(){localStorage.setItem('gita_bk',JSON.stringify(bookmarks))}
+function isBK(ch,v){return bookmarks.some(b=>b.ch===ch&&b.v===v)}
+function togBK(ch,v,d){
+  if(isBK(ch,v)) bookmarks=bookmarks.filter(b=>!(b.ch===ch&&b.v===v));
+  else bookmarks.push({ch,v,san:d.slok||'',ref:`${ch}.${v}`});
+  saveBK();
+}
+
+async function get(path){
+  if(cache[path]) return cache[path];
+  
+  // FIX APPLIED HERE: Added + '/' to prevent GitHub Pages 301 Redirect which loses CORS headers
+  const r=await fetch(API+path+'/');
+  
+  if(!r.ok) throw new Error(r.status);
+  const d=await r.json(); cache[path]=d; return d;
+}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+
+function cm(){document.getElementById('nl').classList.remove('open')}
+
+function go(page,x){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page)?.classList.add('active');
+  window.scrollTo(0,0);
+  if(page==='home')      initHome();
+  if(page==='chapters')  initChaps();
+  if(page==='daily')     initDaily();
+  if(page==='bookmarks') initBK();
+  if(page==='chapter'&&x) initCh(x.ch);
+  if(page==='verse'&&x)   initV(x.ch,x.v);
+}
+
+function chHtml(c){
+  return `<div class="chcard" onclick="go('chapter',{ch:${c.n}})">
+    <div class="chnum">Chapter ${c.n} of 18</div>
+    <div class="chname">${c.name}</div>
+    <div class="chsan">${c.san}</div>
+    <div class="chmng">${c.mng}</div>
+    <div class="chcnt">${c.v} Verses</div>
+  </div>`;
+}
+
+// HOME — chapters render immediately, hero verse loads async
+function initHome(){
+  document.getElementById('hgrid').innerHTML=CH.map(chHtml).join('');
+  // Show a famous verse immediately
+  const f=FAMOUS[Math.floor(Math.random()*FAMOUS.length)];
+  document.getElementById('hsan').innerHTML=(f.san||'').replace(/\n/g,'<br/>');
+  document.getElementById('htrans').textContent=f.t;
+  document.getElementById('href').textContent=`— Bhagavad Gita ${f.ch}.${f.v}`;
+  // Try live random verse in background
+  (async()=>{
+    try{
+      const ch=Math.ceil(Math.random()*18);
+      const vn=Math.ceil(Math.random()*CH[ch-1].v);
+      const d=await get(`/slok/${ch}/${vn}`);
+      if(d?.slok){
+        document.getElementById('hsan').innerHTML=d.slok.replace(/\n/g,'<br/>');
+        document.getElementById('htrans').textContent=d.siva?.et||d.purohit?.et||d.tej?.et||f.t;
+        document.getElementById('href').textContent=`— Bhagavad Gita ${ch}.${vn}`;
+      }
+    }catch(e){}
+  })();
+}
+
+function initChaps(){
+  document.getElementById('cgrid').innerHTML=CH.map(chHtml).join('');
+}
+
+function initCh(n){
+  curCh=n; curMaxV=CH[n-1].v;
+  const c=CH[n-1];
+  let rows='';
+  for(let i=1;i<=c.v;i++){
+    rows+=`<div class="vrow" onclick="go('verse',{ch:${n},v:${i}})">
+      <span class="vrnum">${n}.${i}</span>
+      <span class="vrsan" id="rs${n}_${i}">—</span>
+      <span class="vrarr">›</span>
+    </div>`;
+  }
+  document.getElementById('chc').innerHTML=`
+    <button class="back" onclick="go('chapters')">← All Chapters</button>
+    <div class="chhead">
+      <div class="chhead-num">Chapter ${n} of 18</div>
+      <h1 class="chhead-title">${c.name}</h1>
+      <div class="chhead-san">${c.san}</div>
+      <div class="chhead-mng">${c.mng}</div>
+    </div>
+    <div class="chsummary">${c.sum}</div>
+    <div class="vlist">${rows}</div>`;
+  lazyV(n,c.v);
+}
+
+async function lazyV(ch,max){
+  for(let v=1;v<=max;v++){
+    const el=document.getElementById(`rs${ch}_${v}`);
+    if(!el) return; // page changed
+    try{
+      const d=await get(`/slok/${ch}/${v}`);
+      if(el) el.textContent=(d.slok||'').split('\n')[0].substring(0,70)+'…';
+    }catch(e){if(el) el.textContent=`Verse ${v}`;}
+    await wait(80);
+  }
+}
+
+async function initV(ch,v){
+  curCh=ch; curV=v; curMaxV=CH[ch-1].v;
+  const el=document.getElementById('vc');
+  el.innerHTML=`<div class="ld"><div class="ldr"></div><span class="ltxt">Loading Verse ${ch}.${v}</span></div>`;
+  try{
+    const d=await get(`/slok/${ch}/${v}`);
+    el._d={ch,v,d};
+    renderV(el,ch,v,d);
+  }catch(e){
+    el.innerHTML=`<div class="err">Could not load verse ${ch}.${v}.<br/>Check your internet connection and try again.<br/><br/><button class="btn btno" onclick="initV(${ch},${v})" style="margin-top:.5rem">Retry</button></div>`;
+  }
+}
+
+function renderV(el,ch,v,d){
+  const av=Object.keys(TRANS).filter(k=>d[k]?.et);
+  if(!av.includes(curTrans)) curTrans=av[0]||'siva';
+  const hp=v>1||ch>1, hn=v<curMaxV||ch<18;
+  const tabs=av.map(k=>`<button class="tab ${k===curTrans?'active':''}" onclick="swT('${k}')">${TRANS[k].l}</button>`).join('');
+  const t=d[curTrans]||{};
+  const bk=isBK(ch,v);
+  el.innerHTML=`
+    <div class="vnav">
+      <button class="vnbtn" onclick="go('chapter',{ch:${ch}})">← Chapter ${ch}</button>
+      <span class="vbadge">BG ${ch}.${v}</span>
+      <button class="bkbtn ${bk?'saved':''}" id="bkb" onclick="doBK(${ch},${v})">${bk?'★ Saved':'☆ Save'}</button>
+    </div>
+    <div class="vblock">
+      <div class="vblabel">Sanskrit Shloka</div>
+      <div class="vsan">${(d.slok||'').replace(/\n/g,'<br/>')}</div>
+    </div>
+    ${d.transliteration?`<div class="vblock"><div class="vblabel">Transliteration</div><div class="vtrans">${d.transliteration.replace(/\n/g,'<br/>')}</div></div>`:''}
+    ${d.word_meanings?`<div class="vblock"><div class="vblabel">Word Meanings</div><div class="vwords">${d.word_meanings}</div></div>`:''}
+    <div style="margin-top:1.5rem">
+      <div class="tabs">${tabs}</div>
+      <div class="tbox" id="tb">
+        <div class="tauthor">${TRANS[curTrans]?.n||curTrans}</div>
+        <div class="ttext">${t.et||'Translation not available.'}</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:2rem;gap:1rem">
+      ${hp?`<button class="vnbtn" onclick="goPrev(${ch},${v})">← Previous</button>`:'<span></span>'}
+      ${hn?`<button class="vnbtn" onclick="goNext(${ch},${v})">Next →</button>`:'<span></span>'}
+    </div>`;
+}
+
+function swT(k){
+  curTrans=k;
+  const el=document.getElementById('vc');
+  if(!el._d) return;
+  const {d}=el._d;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.textContent===TRANS[k]?.l));
+  const t=d[k]||{};
+  const tb=document.getElementById('tb');
+  if(tb) tb.innerHTML=`<div class="tauthor">${TRANS[k]?.n||k}</div><div class="ttext">${t.et||'Not available.'}</div>`;
+}
+
+function doBK(ch,v){
+  const el=document.getElementById('vc');
+  togBK(ch,v,el._d?.d||{});
+  const btn=document.getElementById('bkb');
+  const bk=isBK(ch,v);
+  if(btn){btn.textContent=bk?'★ Saved':'☆ Save';btn.classList.toggle('saved',bk);}
+}
+
+function goPrev(ch,v){
+  if(v>1) go('verse',{ch,v:v-1});
+  else if(ch>1) go('verse',{ch:ch-1,v:CH[ch-2].v});
+}
+function goNext(ch,v){
+  if(v<curMaxV) go('verse',{ch,v:v+1});
+  else if(ch<18) go('verse',{ch:ch+1,v:1});
+}
+
+async function initDaily(){
+  const el=document.getElementById('dc');
+  el.innerHTML=`<div class="ld"><div class="ldr"></div><span class="ltxt">Receiving Wisdom</span></div>`;
+  const day=Math.floor(Date.now()/86400000);
+  const ch=(day%18)+1, vn=(day%CH[ch-1].v)+1;
+  loadDV(el,ch,vn);
+}
+
+async function loadDV(el,ch,v){
+  try{
+    const d=await get(`/slok/${ch}/${v}`);
+    const t=d.siva?.et||d.purohit?.et||d.tej?.et||'';
+    el.innerHTML=`
+      <div class="dcard">
+        <div class="dsan">${(d.slok||'').replace(/\n/g,'<br/>')}</div>
+        <div class="dtxt">"${t}"</div>
+        <div class="dautr">— ${TRANS.siva.n}</div>
+      </div>
+      <p style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:.1em;margin-bottom:2rem">Bhagavad Gita · Chapter ${ch}, Verse ${v}</p>
+      <div class="cta">
+        <button class="btn btnp" onclick="go('verse',{ch:${ch},v:${v}})">Read Full Verse</button>
+        <button class="btn btno" onclick="randV()">Another Verse</button>
+      </div>`;
+  }catch(e){
+    el.innerHTML=`<div class="err">Could not load. Check connection.</div><div class="cta" style="justify-content:center;margin-top:1rem"><button class="btn btno" onclick="randV()">Try Another</button></div>`;
+  }
+}
+
+async function randV(){
+  const el=document.getElementById('dc');
+  el.innerHTML=`<div class="ld"><div class="ldr"></div><span class="ltxt">Receiving Wisdom</span></div>`;
+  const ch=Math.ceil(Math.random()*18), v=Math.ceil(Math.random()*CH[ch-1].v);
+  loadDV(el,ch,v);
+}
+window.randV=randV;
+
+async function doSearch(){
+  const q=document.getElementById('si').value.trim().toLowerCase();
+  if(!q) return;
+  const el=document.getElementById('sr');
+  el.innerHTML=`<div class="ld"><div class="ldr"></div><span class="ltxt">Searching 700 verses</span></div>`;
+  const found=[];
+  
+  outer:
+  for(let ch=1;ch<=18;ch++){
+    const reqs = [];
+    for(let v=1;v<=CH[ch-1].v;v++){
+       reqs.push(get(`/slok/${ch}/${v}`).catch(()=>null));
+    }
+    const results = await Promise.all(reqs);
+    for(let v=1;v<=results.length;v++){
+       const d = results[v-1];
+       if(!d) continue;
+       const hay=[d.slok,d.transliteration,d.siva?.et,d.purohit?.et,d.tej?.et,d.word_meanings].filter(Boolean).join(' ').toLowerCase();
+       if(hay.includes(q)) found.push({ch,v,d});
+       if(found.length>=15) break outer;
+    }
+  }
+  if(!found.length){el.innerHTML=`<p class="err">No verses found for "<em>${q}</em>".<br/>Try: karma, soul, duty, peace, maya, devotion, knowledge</p>`;return;}
+  el.innerHTML=`<p style="font-family:'Cinzel',serif;font-size:12px;color:var(--text-dim);margin-bottom:1rem;letter-spacing:.1em">${found.length} verse${found.length>1?'s':''} found</p>`+
+    found.map(({ch,v,d})=>{
+      const t=d.siva?.et||d.purohit?.et||d.tej?.et||'';
+      return `<div class="rcard" onclick="go('verse',{ch:${ch},v:${v}})">
+        <div class="rref">Bhagavad Gita ${ch}.${v}</div>
+        <div class="rsan">${(d.slok||'').split('\n')[0].substring(0,70)}…</div>
+        <div class="rtxt">${t.substring(0,130)}…</div>
+      </div>`;
+    }).join('');
+}
+
+function initBK(){
+  const el=document.getElementById('bkc');
+  if(!bookmarks.length){el.innerHTML=`<p class="err">No saved verses yet.<br/>Tap ☆ Save while reading any verse to bookmark it here.</p>`;return;}
+  el.innerHTML=bookmarks.map(b=>`
+    <div class="rcard" onclick="go('verse',{ch:${b.ch},v:${b.v}})">
+      <div class="rref">Bhagavad Gita ${b.ref}</div>
+      <div class="rsan">${(b.san||'').split('\n')[0].substring(0,80)}…</div>
+      <div style="text-align:right;margin-top:.5rem">
+        <button onclick="event.stopPropagation();rmBK(${b.ch},${b.v})" style="background:none;border:none;cursor:pointer;color:var(--text-dim);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em">✕ Remove</button>
+      </div>
+    </div>`).join('');
+}
+function rmBK(ch,v){bookmarks=bookmarks.filter(b=>!(b.ch===ch&&b.v===v));saveBK();initBK();}
+window.rmBK=rmBK;
+
+// Start
+initHome();
+</script>
+</body>
+</html>
